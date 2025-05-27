@@ -114,7 +114,7 @@ export type Order = {
 };
 
 export type Product = {
-  id: any;
+  id: Key | null | undefined;
   _id: string;
   _type: "product";
   _createdAt: string;
@@ -298,7 +298,7 @@ export type ALL_CATEGORIES_QUERYResult = Array<{
   description?: string;
 }>;
 
-// Source: ./sanity/lib/products/getallProducts.ts
+// Source: ./sanity/lib/products/getAllProducts.ts
 // Variable: ALL_PRODUCTS_QUERY
 // Query: *[_type == "product"] | order(name asc)
 export type ALL_PRODUCTS_QUERYResult = Array<{
@@ -363,11 +363,31 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts
+// Variable: ACTIVE_SALE_BY_COUPON_QUERY
+// Query: *[            _type == "sale" &&            isActive == true &&            couponCode == $couponCode        ] | order(validFrom desc) [0]
+export type ACTIVE_SALE_BY_COUPON_QUERYResult = {
+  _id: string;
+  _type: "sale";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  discountAmount?: number;
+  couponCode?: string;
+  validFrom?: string;
+  validUntil?: string;
+  isActive?: boolean;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
+import { Key } from "react";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n    *[_type == \"category\"] | order(name asc)\n  ": ALL_CATEGORIES_QUERYResult;
     "\n    *[_type == \"product\"] | order(name asc) ": ALL_PRODUCTS_QUERYResult;
+    "\n        *[\n            _type == \"sale\" &&\n            isActive == true &&\n            couponCode == $couponCode\n        ] | order(validFrom desc) [0]\n        ": ACTIVE_SALE_BY_COUPON_QUERYResult;
   }
 }

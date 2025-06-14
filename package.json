@@ -11,12 +11,15 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.20.0",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-popover": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.89.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "framer-motion": "^12.14.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
@@ -26,7 +29,8 @@
     "react-is": "^19.1.0",
     "sanity": "^3.89.0",
     "styled-components": "^6.1.18",
-    "tailwind-merge": "^3.3.0"
+    "tailwind-merge": "^3.3.0",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

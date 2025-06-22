@@ -1,4 +1,3 @@
-import JuneSale from "@/components/JuneSale";
 import ProductsView from "@/components/ProductsView";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 import { getAllCategories } from "@/sanity/lib/products/getAllCategories";

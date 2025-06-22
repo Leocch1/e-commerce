@@ -452,28 +452,18 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
 
 // Source: ./sanity/lib/products/getProductBySlug.ts
 // Variable: PRODUCT_BY_ID_QUERY
-// Query: *[        _type == "product" && slug.current == $slug    ] | order(name asc) [0]
+// Query: *[      _type == "product" && slug.current == $slug    ][0]{      _id,      name,      slug,      price,      stock,      description,      images[3],    }
 export type PRODUCT_BY_ID_QUERYResult = {
+  _rev: any;
+  _updatedAt: any;
+  _createdAt: any;
+  _type: any;
   _id: string;
-  _type: "product";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  description?: Array<{
+  name: string | null;
+  slug: Slug | null;
+  price: number | null;
+  stock: number | null;
+  description: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -503,16 +493,8 @@ export type PRODUCT_BY_ID_QUERYResult = {
     alt?: string;
     _type: "image";
     _key: string;
-  }>;
-  price?: number;
-  category?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  stock?: number;
+  }> | null;
+  images: null;
 } | null;
 
 // Source: ./sanity/lib/products/getProductsByCategory.tsx
@@ -670,7 +652,7 @@ declare module "@sanity/client" {
     "\n        *[_type == \"order\" && clerkUserId == $userId] | order(orderDate desc) {\n            ...,\n            products[]{\n                ...,\n                product->\n            }\n        }\n        ": MY_ORDERS_QUERYResult;
     "\n    *[_type == \"category\"] | order(name asc)\n  ": ALL_CATEGORIES_QUERYResult;
     "\n    *[_type == \"product\"] | order(name asc) ": ALL_PRODUCTS_QUERYResult;
-    "\n    *[\n        _type == \"product\" && slug.current == $slug\n    ] | order(name asc) [0] \n        ": PRODUCT_BY_ID_QUERYResult;
+    "\n    *[\n      _type == \"product\" && slug.current == $slug\n    ][0]{\n      _id,\n      name,\n      slug,\n      price,\n      stock,\n      description,\n      images[3],\n    }\n  ": PRODUCT_BY_ID_QUERYResult;
     "\n    *[_type == \"product\" && references(*[_type == \"category\" && slug.current == $categorySlug]._id)] \n    | order(name asc) \n    ": PRODUCTS_BY_CATEGORY_QUERYResult;
     "\n            *[\n                _type == \"product\"\n                && name match $searchParam\n            ] | order(name asc)\n        ": PRODUCT_SEARCH_QUERYResult;
     "\n        *[\n            _type == \"sale\" &&\n            isActive == true &&\n            couponCode == $couponCode\n        ] | order(validFrom desc) [0]\n        ": ACTIVE_SALE_BY_COUPON_QUERYResult;

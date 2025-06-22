@@ -5,15 +5,17 @@ import { CategoriesSelectorComponent } from "./ui/category-selector";
 interface ProductsViewProps {
     products: Product[];
     categories: Category[];
+    showCategories?: boolean;
 }
 
-const ProductsView = ({ products, categories}: ProductsViewProps) => {
+const ProductsView = ({ products, categories, showCategories}: ProductsViewProps) => {
     return <div className="flex flex-col">
         {/*categories*/}
+        {showCategories && (
         <div className="w-full sm:w-[200px]">
-
-            <CategoriesSelectorComponent categories={categories} />
+          <CategoriesSelectorComponent categories={categories} />
         </div>
+      )}
 
         {/*products*/}
         <div className="flex-1">

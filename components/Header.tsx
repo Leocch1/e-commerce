@@ -37,7 +37,7 @@ console.log(user);
              mx-auto 
              sm:mx-0"
             >
-            Shopr</Link>
+            Tote & Tale</Link>
             <Form action="/search"
             className="w-full sm:w-auto sm:flex-1 sm:mx-4 mt-2 sm:mt-0" >
                 <input

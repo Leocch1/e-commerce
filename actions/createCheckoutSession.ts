@@ -38,7 +38,7 @@ export async function createCheckoutSEssion(
         }
 
     const isProd = process.env.NODE_ENV === "production";
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://e-commerce-website-azure-iota.vercel.app";
+    const baseUrl = "https://e-commerce-website-azure-iota.vercel.app";
     const cancelUrl = `${baseUrl}/basket`;
     const successUrl = `${baseUrl}/checkout/success`;
 

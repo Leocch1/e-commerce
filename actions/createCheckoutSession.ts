@@ -38,11 +38,9 @@ export async function createCheckoutSEssion(
         }
 
     const isProd = process.env.NODE_ENV === "production";
-    const baseUrl = isProd
-        ? `https://${process.env.VERCEL_URL}`
-        : process.env.NEXT_PUBLIC_BASE_URL;
-    const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://e-commerce-website-azure-iota.vercel.app";
     const cancelUrl = `${baseUrl}/basket`;
+    const successUrl = `${baseUrl}/checkout/success`;
 
     const session = await stripe.checkout.sessions.create({
         customer: customerId,

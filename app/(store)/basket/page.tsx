@@ -74,7 +74,7 @@ function BasketPage() {
 
   return (
     <div className="container mx-auto p-4 max-w-6xl">
-      <h1 className="text-2xl font-bold mb-4">Your Basket</h1>
+      <h1 className="text-4xl font-bold mb-4 text-gray-900">Your Basket</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-grow">
           {groupedItems?.map((item) => (
@@ -161,7 +161,7 @@ function BasketPage() {
             <button
               onClick={handleCheckout}
               disabled={isLoading || checkedGroupedItems.length === 0}
-              className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600
+              className="mt-4 w-full bg-yellow-800 text-white px-4 py-2 rounded hover:bg-yellow-900
                         disabled:bg-gray-400"
             >
               {isLoading
@@ -172,7 +172,7 @@ function BasketPage() {
             </button>
           ) : (
             <SignInButton mode="modal">
-              <button className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              <button className="mt-4 w-full bg-yellow-800 text-white px-4 py-2 rounded hover:bg-yellow-900">
                 Sign in to Checkout
               </button>
             </SignInButton>

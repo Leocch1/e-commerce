@@ -93,7 +93,7 @@ function AddToBasketButton({ product, disabled }: AddToBasketButtonProps) {
                 transition-colors duration-200 ${
                   disabled
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600"
+                    : "bg-gray-800 hover:bg-gray-900"
                 }`}
         disabled={disabled}
       >
@@ -101,7 +101,7 @@ function AddToBasketButton({ product, disabled }: AddToBasketButtonProps) {
       </button>
       <button
         onClick={handleCheckoutNow}
-        className="ml-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition"
+        className="ml-4 bg-yellow-800 hover:bg-yellow-900 text-white font-semibold py-2 px-4 rounded transition"
         disabled={disabled || isLoading}
       >
         {isLoading ? "Processing..." : "Checkout Now"}

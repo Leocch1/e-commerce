@@ -33,7 +33,7 @@ function ProductThumb({ product }: { product: Product }) {
                 )}
             </div>
             <div className="p-4">
-                <h2 className="text-lg font-semibold text-gray-800 truncate">
+                <h2 className="text-lg font-semibold text-gray-900 truncate">
                     {product.name}
                 </h2>
 

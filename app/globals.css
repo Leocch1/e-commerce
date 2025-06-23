@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1, h2, h3, .heading-serif {
+  font-family: 'DM Serif Display', serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

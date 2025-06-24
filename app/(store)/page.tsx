@@ -4,6 +4,7 @@ import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import ScrollToTopLink from "@/components/ScrollToTopLink";
 
 export const dynamic = "force-static";
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -88,12 +89,12 @@ export default async function Home() {
             <p className="text-gray-600 text-sm sm:text-base mb-4">
               Crafted for the Stories You Live
             </p>
-            <Link
-              href="/items"
-              className="bg-gray-800 text-white font-semibold text-sm px-6 py-2 rounded-full hover:bg-gray-900 transition whitespace-nowrap w-fit"
-            >
-              Shop Now
-            </Link>
+            <ScrollToTopLink
+  href="/items"
+  className="bg-gray-800 text-white font-semibold text-sm px-6 py-2 rounded-full hover:bg-gray-900 transition whitespace-nowrap w-fit"
+>
+  Shop Now
+</ScrollToTopLink>
           </div>
 
           {/* Image Block - hidden on mobile */}
@@ -155,12 +156,12 @@ export default async function Home() {
           <p className="text-sm sm:text-base font-semibold mb-2">Own your Style</p>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-2 text-right">Own Your Look</h2>
           <p className="text-sm sm:text-base mb-4 text-right">Crafted for those who carry style with meaning.</p>
-          <Link
-            href="/items"
-            className="bg-white text-[#ed1c24] font-bold px-6 py-2 rounded-full shadow hover:bg-red-900 hover:text-white transition"
-          >
-            Shop the Collection
-          </Link>
+          <ScrollToTopLink
+  href="/items"
+  className="bg-white text-[#ed1c24] font-bold px-6 py-2 rounded-full shadow hover:bg-red-900 hover:text-white transition"
+>
+  Shop the Collection
+</ScrollToTopLink>
         </div>
       </section>
 

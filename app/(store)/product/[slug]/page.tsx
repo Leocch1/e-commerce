@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PortableText } from "next-sanity";
 import { Button } from "@/components/ui/button";
 import AddToBasketButton from "@/components/AddToBasketButton";
+import BackToItemsButton from "@/components/BackToItemsButton";
 
 export const dynamic = "force-static";
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -27,6 +28,7 @@ async function Productpage( {params} : {params: Promise<{ slug: string }> }) {
     
   return (
     <div className="container mx-auto px-4 py-8">
+        <BackToItemsButton />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className={`relative aspect-square overflow-hidden rounded-lg, shadow-lg ${isOutOfStock ? 'opacity-50' : ''}`}>
                 {product.image && (

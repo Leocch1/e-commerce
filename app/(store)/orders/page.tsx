@@ -4,6 +4,7 @@ import { getMyOrders } from "@/sanity/lib/orders/getMyOrders";
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import BackToItemsButton from "@/components/BackToItemsButton";
 
 
 async function Orders() {
@@ -29,6 +30,7 @@ console.log("========================");
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
             <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg w-full max-w-4xl">
+                <BackToItemsButton />
                 <h1 className="text-4xl font-bold text-gray-900 tracking-tight mb-8">
                     My Orders
                 </h1>

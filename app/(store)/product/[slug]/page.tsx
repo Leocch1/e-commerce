@@ -27,10 +27,10 @@ async function Productpage( {params} : {params: Promise<{ slug: string }> }) {
 
     
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 ">
         <BackToItemsButton />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className={`relative aspect-square overflow-hidden rounded-lg, shadow-lg ${isOutOfStock ? 'opacity-50' : ''}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+            <div className={`relative aspect-square overflow-hidden rounded-lg , shadow-lg ${isOutOfStock ? 'opacity-50' : ''}`}>
                 {product.image && (
                     <Image
                         src={imageUrl(product.image).url()} 
@@ -45,7 +45,7 @@ async function Productpage( {params} : {params: Promise<{ slug: string }> }) {
                         </div>
                 )}
             </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-between ">
                     <div>
                         <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
                         <div className="text-xl font-semibold mb-4">

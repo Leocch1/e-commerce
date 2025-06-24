@@ -15,7 +15,7 @@ export default async function Home() {
     <div>
       <JuneSale/>
 
-      <div className="flex flex-col items-center justify-top min-h-screen bg-gray-100 p-4">
+      <div className="flex flex-col items-center justify-top min-h-screen bg-[#fff2e2] p-4">
         <ProductsView products={products} categories={categories} showCategories={true}/>
       </div>
       <footer className="w-full bg-gray-800 text-white py-6 mt-8">

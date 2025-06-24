@@ -22,7 +22,7 @@ export default async function Home() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-[#fcf9f5]">
 
       <section className="relative w-full min-h-screen bg-white flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 lg:px-20 overflow-hidden">
         {/* Background Slant */}
@@ -115,7 +115,7 @@ export default async function Home() {
 
 
       {/* Best Selling Products */}
-      <section className="w-full max-w-5xl mx-auto mt-12 flex flex-col items-center">
+      <section className="w-full max-w-5xl mx-auto mt-12 flex flex-col items-center bg-[#fcf9f5]">
   <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-2 text-center">
     Best Selling Products
   </h2>

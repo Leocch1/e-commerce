@@ -24,7 +24,7 @@ const createClerkPasskey = async () => {
 
 console.log(user);
   return (
-    <header className="flex flex-wrap justify-between items-center px-4 py-2">
+    <header className="flex flex-wrap justify-between items-center px-4 py-2 bg-[#fcf9f5]">
         {/* Top row */}
         <div className="flex w-full flex-wrap justify-between items-center">
             <Link href="/"

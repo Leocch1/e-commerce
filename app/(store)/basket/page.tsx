@@ -65,7 +65,7 @@ function BasketPage() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#fff2e2] min-h-screen">
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <div className="mb-4">
           <button

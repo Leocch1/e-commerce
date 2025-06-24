@@ -20,7 +20,7 @@ function SuccessPage () {
     }, [orderNumber, clearBasket]);
 
     return(
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#fff2e2]">
             <div className="bg-white p-12 rounded-xl shadow-lg max-w-2xl w-full mx-4">
                 <div className="flex justify-center mb-8">
                     <div className="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center">

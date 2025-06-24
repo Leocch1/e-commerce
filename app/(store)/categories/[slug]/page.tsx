@@ -11,7 +11,7 @@ async function Categorypage(
   const categories = await getAllCategories();
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-[#fff2e2] p-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-full">
         {/* ✅ Button goes here */}
         <BackToItemsButton />

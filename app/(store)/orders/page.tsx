@@ -123,11 +123,11 @@ console.log("========================");
                                                     {product.product?.images && (
                                                         <div className="relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 rounded-md overflow-hidden">
                                                             <Image
-                                                                src={imageUrl(product.product.images).url()}
+                                                                src={imageUrl(product.product.images[0]).url()}
                                                                 alt={product.product?.name ?? "Product image"}
                                                                 className="object-cover"
                                                                 fill
-                                                            />
+                                                                />
                                                         </div>
                                                     )}
                                                     <div>

@@ -13,6 +13,17 @@ export default async function Home() {
   const rawProducts = await getAllProducts();
   const categories = await getAllCategories();
 
+  const featuredProductIds = [
+  "a4690a28-19da-40ab-abad-80c03a8180c8", // Example Sanity product _id
+  "f484b59e-83f1-4f3f-8d83-2a84ceace42c",
+  "3e0dafb4-2bf6-4179-ab93-5ad36031f779",
+  "172877ad-8028-4fea-9d5c-b427d8b19c55"
+];
+
+const featuredProducts = rawProducts.filter(product =>
+  featuredProductIds.includes(product._id)
+);
+
   console.log(
     crypto.randomUUID().slice(0, 5) +
     `>>> Rerendered the home page cache with ${ProductsView.length}
@@ -114,18 +125,20 @@ export default async function Home() {
 
       {/* Best Selling Products */}
       <section className="w-full max-w-5xl mx-auto mt-12 flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-2 text-center">
-          Best Selling Products
-        </h2>
-        <p className="text-gray-500 mb-8 text-center">
-          Tote & Tale for the best of us
-        </p>
-        <ProductsView
-          products={rawProducts.slice(0, 4)}
-          categories={categories}
-          showCategories={false}
-        />
-      </section>
+  <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-2 text-center">
+    Best Selling Products
+  </h2>
+  <p className="text-gray-500 mb-8 text-center">
+    Tote & Tale for the best of us
+  </p>
+
+  {/** Featured products (manually selected by _id) */}
+  <ProductsView
+    products={featuredProducts}
+    categories={categories}
+    showCategories={false}
+  />
+</section>
 
       {/* Old Hero Section (moved below products) */}
       <section className="relative w-full flex flex-col-reverse md:flex-row bg-[#a26f25] rounded-xl mt-12 mx-auto max-w-6xl px-4 sm:px-8 py-8 sm:py-12 justify-between items-center overflow-hidden">

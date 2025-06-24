@@ -1,18 +1,20 @@
+// app/(store)/product/[slug]/page.tsx
+
 import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
 import { notFound } from "next/navigation";
 import ProductClientView from "@/components/ProductClientView";
 
-export const dynamic = "force-static";
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
 export const revalidate = 60;
 
-export default async function Productpage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function ProductPage({ params }: Props) {
   const { slug } = params;
 
-  // now continue with your logic:
   const product = await getProductBySlug(slug);
 
   if (!product) return notFound();

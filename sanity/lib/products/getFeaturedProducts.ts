@@ -15,7 +15,7 @@ export const getFeaturedProducts = async (): Promise<Product[]> => {
       name,
       price,
       slug,
-      image,
+      images[]{asset->},
       description,
       featured,
       category->{

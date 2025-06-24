@@ -24,14 +24,19 @@ export  const productType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: 'image',
-            title: 'Product Image',
-            type: 'image', 
-            validation: (Rule) => Rule.required(),
-            options: {
-                hotspot: true,
-            }
-        }),
+  name: "images",
+  title: "Product Images",
+  type: "array",
+  of: [
+    {
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+  ],
+  validation: (Rule) => Rule.min(1).required(),
+},),
         defineField({
             name: 'description',
             title: 'Description',

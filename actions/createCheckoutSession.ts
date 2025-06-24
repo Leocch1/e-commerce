@@ -68,9 +68,9 @@ export async function createCheckoutSEssion(
                 metadata: {
                     id: item.product._id
                 },
-                images: item.product.image
-                    ? [imageUrl(item.product.image).url()]
-                    : undefined
+                images: item.product.images && item.product.images.length > 0
+        ? [imageUrl(item.product.images[0]).url()]
+        : undefined,
             }
         },
         quantity: item.quantity

@@ -120,10 +120,10 @@ console.log("========================");
                                                 className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-2 border-b last:border-b-0"
                                             >
                                                 <div className="flex items-center gap-3 sm:gap-4">
-                                                    {product.product?.image && (
+                                                    {product.product?.images && (
                                                         <div className="relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 rounded-md overflow-hidden">
                                                             <Image
-                                                                src={imageUrl(product.product.image).url()}
+                                                                src={imageUrl(product.product.images).url()}
                                                                 alt={product.product?.name ?? "Product image"}
                                                                 className="object-cover"
                                                                 fill

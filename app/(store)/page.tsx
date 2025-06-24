@@ -5,24 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import ScrollToTopLink from "@/components/ScrollToTopLink";
+import { getFeaturedProducts } from "@/sanity/lib/products/getFeaturedProducts";
 
 export const dynamic = "force-static";
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function Home() {
-  const rawProducts = await getAllProducts();
-  const categories = await getAllCategories();
+  const featuredProducts = await getFeaturedProducts();
+  const categories = await getAllCategories();  
 
-  const featuredProductIds = [
-  "a4690a28-19da-40ab-abad-80c03a8180c8", // Example Sanity product _id
-  "f484b59e-83f1-4f3f-8d83-2a84ceace42c",
-  "3e0dafb4-2bf6-4179-ab93-5ad36031f779",
-  "172877ad-8028-4fea-9d5c-b427d8b19c55"
-];
-
-const featuredProducts = rawProducts.filter(product =>
-  featuredProductIds.includes(product._id)
-);
 
   console.log(
     crypto.randomUUID().slice(0, 5) +
@@ -134,10 +125,10 @@ const featuredProducts = rawProducts.filter(product =>
 
   {/** Featured products (manually selected by _id) */}
   <ProductsView
-    products={featuredProducts}
-    categories={categories}
-    showCategories={false}
-  />
+  products={featuredProducts}
+  categories={categories}
+  showCategories={false}
+/>
 </section>
 
       {/* Old Hero Section (moved below products) */}

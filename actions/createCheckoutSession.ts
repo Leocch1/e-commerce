@@ -43,33 +43,39 @@ export async function createCheckoutSEssion(
     const cancelUrl = `${baseUrl}/basket`;
 
     const session = await stripe.checkout.sessions.create({
-        customer: customerId,
-            customer_creation: customerId ? undefined : "always",
-            customer_email: !customerId ? metadata.customerEmail : undefined,
-            metadata,
-            mode: "payment",
-            allow_promotion_codes: true,
-            payment_method_types: ['card'],
-            success_url: successUrl,
-            cancel_url: cancelUrl,
-            line_items: items.map((item) => ({
-                price_data: {
-                    currency: "php",
-                    unit_amount: Math.round(item.product.price! * 100),
-                    product_data: {
-                        name: item.product.name || "Unnamed Product",
-                        description: `Product ID: ${item.product._id}`,
-                        metadata: {
-                            id: item.product._id
-                        },
-                        images: item.product.image
-                            ? [imageUrl(item.product.image).url()]
-                            :undefined
-                    }
+    customer: customerId,
+    customer_creation: customerId ? undefined : "always",
+    customer_email: !customerId ? metadata.customerEmail : undefined,
+    metadata,
+    mode: "payment",
+    allow_promotion_codes: true,
+    payment_method_types: ['card'],
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    shipping_address_collection: {
+        allowed_countries: ['PH'], // Add more country codes as needed
+    },
+    phone_number_collection: {
+        enabled: true,
+    },
+    line_items: items.map((item) => ({
+        price_data: {
+            currency: "php",
+            unit_amount: Math.round(item.product.price! * 100),
+            product_data: {
+                name: item.product.name || "Unnamed Product",
+                description: `Product ID: ${item.product._id}`,
+                metadata: {
+                    id: item.product._id
                 },
-                quantity: item.quantity
-            }))
-    })
+                images: item.product.image
+                    ? [imageUrl(item.product.image).url()]
+                    : undefined
+            }
+        },
+        quantity: item.quantity
+    }))
+});
 
     return session.url;    
     } catch (error) {

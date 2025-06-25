@@ -5,7 +5,13 @@ import ProductClientView from "@/components/ProductClientView";
 export const dynamic = "force-static";
 export const revalidate = 60;
 
-export default async function Page({ params }: { params: { slug: string } }) {
+type ProductPageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function Page({ params }: ProductPageProps) {
   const product = await getProductBySlug(params.slug);
 
   if (!product) return notFound();

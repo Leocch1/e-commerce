@@ -6,13 +6,15 @@ export const dynamic = "force-static";
 export const revalidate = 60;
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
-  const product = await getProductBySlug(params.slug);
+  // Await the params Promise
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
 
   if (!product) return notFound();
 

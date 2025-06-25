@@ -1,4 +1,3 @@
-// components/ProductClientView.tsx
 "use client";
 
 import { Product } from "@/sanity.types";
@@ -18,6 +17,15 @@ export default function ProductClientView({ product }: ProductClientViewProps) {
   const isOutOfStock = product.stock != null && product.stock <= 0;
   const images = product.images ?? [];
 
+  // Debug logging
+  console.log("Product images:", images);
+  console.log("Selected image index:", selectedImageIndex);
+  console.log("Current image:", images[selectedImageIndex]);
+
+  // Add safety check for images
+  const hasImages = images.length > 0;
+  const currentImage = hasImages ? images[selectedImageIndex] : null;
+
   return (
     <div className="container mx-auto px-4 py-8">
       <BackToItemsButton />
@@ -29,13 +37,18 @@ export default function ProductClientView({ product }: ProductClientViewProps) {
               isOutOfStock ? "opacity-50" : ""
             }`}
           >
-            {images[selectedImageIndex] && (
+            {currentImage ? (
               <Image
-                src={imageUrl(images[selectedImageIndex]).url()}
+                src={imageUrl(currentImage).url()}
                 alt={product.name ?? "Product Image"}
                 fill
                 className="object-contain transition-transform duration-300 hover:scale-105"
               />
+            ) : (
+              // Fallback when no images
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">No image available</span>
+              </div>
             )}
             {isOutOfStock && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -44,27 +57,32 @@ export default function ProductClientView({ product }: ProductClientViewProps) {
             )}
           </div>
 
-          {/* Thumbnails */}
-          <div className="flex space-x-2 overflow-x-auto">
-            {images.map((img, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImageIndex(index)}
-                className={`relative w-20 h-20 border-2 ${
-                  selectedImageIndex === index
-                    ? "border-blue-500"
-                    : "border-transparent"
-                } rounded overflow-hidden`}
-              >
-                <Image
-                  src={imageUrl(img).width(100).height(100).url()}
-                  alt={`Thumbnail ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </button>
-            ))}
-          </div>
+          {/* Thumbnails - only show if there are multiple images */}
+          {hasImages && images.length > 1 && (
+            <div className="flex space-x-2 overflow-x-auto">
+              {images.map((img, index) => {
+                console.log(`Thumbnail ${index}:`, img); // Debug log
+                return (
+                  <button
+                    key={img._key || index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`relative w-20 h-20 border-2 ${
+                      selectedImageIndex === index
+                        ? "border-blue-500"
+                        : "border-transparent"
+                    } rounded overflow-hidden`}
+                  >
+                    <Image
+                      src={imageUrl(img).width(100).height(100).url()}
+                      alt={`Thumbnail ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Product Info */}

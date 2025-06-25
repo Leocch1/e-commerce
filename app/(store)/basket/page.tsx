@@ -105,15 +105,15 @@ function BasketPage() {
                     }
                   >
                     <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 mr-4">
-                      {item.product.images && (
-                        <Image
-                          src={imageUrl(item.product.images).url()}
-                          alt={item.product.name ?? "Product image"}
-                          className="w-full h-full object-cover rounded"
-                          width={96}
-                          height={96}
-                        />
-                      )}
+                      {item.product.images && item.product.images.length > 0 && (
+  <Image
+    src={imageUrl(Array.isArray(item.product.images) ? item.product.images[0] : item.product.images).url()}
+    alt={item.product.name ?? "Product image"}
+    className="w-full h-full object-cover rounded"
+    width={96}
+    height={96}
+  />
+)}
                     </div>
                     <div className="min-w-0">
                       <h2 className="text-lg sm:text-xl font-semibold truncate">

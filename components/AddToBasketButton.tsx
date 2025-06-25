@@ -104,7 +104,7 @@ function AddToBasketButton({ product, disabled }: AddToBasketButtonProps) {
         className="ml-4 bg-yellow-800 hover:bg-yellow-900 text-white font-semibold py-2 px-4 rounded transition"
         disabled={disabled || isLoading}
       >
-        {isLoading ? "Processing..." : "Checkout Now"}
+        {isLoading ? "Processing..." : "Checkout"}
       </button>
     </div>
   );

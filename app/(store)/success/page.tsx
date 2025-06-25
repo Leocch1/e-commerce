@@ -74,7 +74,7 @@ function SuccessPage () {
                             <Link href="/orders">View Order Details</Link>
                         </Button>
                         <Button asChild variant="outline">
-                            <Link href="/">Continue Shopping</Link>
+                            <Link href="/items">Continue Shopping</Link>
                         </Button>
                     </div>
                 </div>
